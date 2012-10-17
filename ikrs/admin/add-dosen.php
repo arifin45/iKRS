@@ -74,6 +74,7 @@ include '../cek-akses.php';
 
     <!-- Le styles -->
     <link href="../css/bootstrap-edit.min.css" rel="stylesheet" />
+    <link href="../form/styles.css" rel="stylesheet" />
     <style>
       body {
         padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
@@ -138,32 +139,32 @@ include '../cek-akses.php';
 		<h1>Input Dosen</h1>
         <div class="row">
         <div class="span4">
-            <form action="<?php echo $editFormAction; ?>" method="post" name="form1" id="form1">
+            <span class="required_notification">* Field tidak boleh kosong</span>
+            <form class="contact_form" action="<?php echo $editFormAction; ?>" method="post" name="form1" id="form1">
               <table class="table">
                 <tr>
-                  <td>User ID:</td>
-                  <td><input type="text" name="user_id" value="" size="32" /></td>
+                  <td>User ID  :</td>
+                  <td><input type="text" name="user_id" value="" size="32" required /></td>
                 </tr>
                 <tr>
-                  <td>Nama:</td>
-                  <td><input type="text" name="name" value="" size="32" /></td>
+                  <td>Nama  :</td>
+                  <td><input type="text" name="name" value="" size="32" required /></td>
                 </tr>
                 <tr>
-                  <td>Password:</td>
+                  <td>Password  :</td>
                   <td>
-                  	<input type="text" name="password" value="" size="32" />
+                  	<input type="text" name="password" value="" size="32" required />
                   	<input type="hidden" name="type" value="dosen">
                   </td>
                 </tr>
                 <tr>
                   <td>&nbsp;</td>
-                  <td><input type="submit" class="btn btn-success" value="Masukkan Data" /></td>
+                  <td><button class="btn btn-success" type="submit">Masukkan Data</button></td>
                 </tr>
               </table>
               <input type="hidden" name="MM_insert" value="form1" />
             </form>
-    		<p>&nbsp;</p>
-            </div>
+          </div>
          </div>
     </div> <!-- /container -->
 

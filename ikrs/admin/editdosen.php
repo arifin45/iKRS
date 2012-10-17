@@ -37,9 +37,8 @@ if (isset($_SERVER['QUERY_STRING'])) {
 }
 
 if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
-  $updateSQL = sprintf("UPDATE `user` SET name=%s, password=%s WHERE user_id=%s",
+  $updateSQL = sprintf("UPDATE `user` SET name=%s WHERE user_id=%s",
                        GetSQLValueString($_POST['name'], "text"),
-                       GetSQLValueString($_POST['password'], "text"),
                        GetSQLValueString($_POST['user_id'], "text"));
 
   mysql_select_db($database_rpl, $rpl);
@@ -142,28 +141,35 @@ $totalRows_dosen = mysql_num_rows($dosen);
   <div class="container">
 
     <h1>iKRS Institut Teknologi Indonesia</h1>
-    <form action="<?php echo $editFormAction; ?>" method="post" name="form1" id="form1">
-      <table class="table table-hover table-bordered">
-        <tr>
-          <td>User ID :</td>
-          <td><?php echo $row_dosen['user_id']; ?></td>
-        </tr>
-        <tr>
-          <td>Nama :</td>
-          <td><input type="text" name="name" value="<?php echo htmlentities($row_dosen['name'], ENT_COMPAT, 'utf-8'); ?>" size="32" /></td>
-        </tr>
-        <tr>
-          <td>Password:</td>
-          <td><input type="text" name="password" value="" size="32" placeholder="New Password" /></td>
-        </tr>
-        <tr>
-          <td>&nbsp;</td>
-          <td><input type="submit" class="btn btn-success" value="Update" /></td>
-        </tr>
-      </table>
-      <input type="hidden" name="MM_update" value="form1" />
-      <input type="hidden" name="user_id" value="<?php echo $row_dosen['user_id']; ?>" />
-    </form>
+    <div class="row">
+      <div class="span5">
+        <form action="<?php echo $editFormAction; ?>" method="post" name="form1" id="form1">
+          <table class="table table-hover table-bordered">
+            <tr>
+              <td>User ID :</td>
+              <td><?php echo $row_dosen['user_id']; ?></td>
+            </tr>
+            <tr>
+              <td>Nama :</td>
+              <td>
+                <input type="text" name="name" value="<?php echo htmlentities($row_dosen['name'], ENT_COMPAT, 'utf-8'); ?>" size="32" required /></td>
+                <input type="hidden" name="type" value="dosen">
+            </tr>
+            <!--<tr>
+              <td>Password:</td>
+              <td>
+                <input type="text" name="password" value="" size="32" placeholder="New Password" /></td>
+            </tr>-->
+            <tr>
+              <td>&nbsp;</td>
+              <td><input type="submit" class="btn btn-success" value="Update" /></td>
+            </tr>
+          </table>
+          <input type="hidden" name="MM_update" value="form1" />
+          <input type="hidden" name="user_id" value="<?php echo $row_dosen['user_id']; ?>" />
+        </form>
+      </div>
+    </div>
     <p>&nbsp;</p>
   </div> <!-- /container -->
 

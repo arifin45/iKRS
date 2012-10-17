@@ -37,9 +37,8 @@ if (isset($_SERVER['QUERY_STRING'])) {
 }
 
 if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
-  $updateSQL = sprintf("UPDATE `user` SET name=%s, password=%s, type=%s WHERE user_id=%s",
+  $updateSQL = sprintf("UPDATE `user` SET name=%s, type=%s WHERE user_id=%s",
                        GetSQLValueString($_POST['name'], "text"),
-                       GetSQLValueString($_POST['password'], "text"),
                        GetSQLValueString($_POST['type'], "text"),
                        GetSQLValueString($_POST['user_id'], "text"));
 
@@ -55,9 +54,8 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
 }
 
 if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
-  $updateSQL = sprintf("UPDATE `user` SET name=%s, password=%s, type=%s WHERE user_id=%s",
+  $updateSQL = sprintf("UPDATE `user` SET name=%s, type=%s WHERE user_id=%s",
                        GetSQLValueString($_POST['name'], "text"),
-                       GetSQLValueString(md5($_POST['password']), "text"),
                        GetSQLValueString($_POST['type'], "text"),
                        GetSQLValueString($_POST['user_id'], "text"));
 
@@ -160,6 +158,8 @@ $totalRows_Recordset2 = mysql_num_rows($Recordset2);
   <div class="container">
 
     <h1>iKRS Institut Teknologi Indonesia</h1>
+    <div class="row">
+    <div class="span5">
     <form method="post" name="form1" action="<?php echo $editFormAction; ?>">
       <table class="table table-hover table-bordered">
         <tr valign="baseline">
@@ -168,12 +168,15 @@ $totalRows_Recordset2 = mysql_num_rows($Recordset2);
         </tr>
         <tr>
           <td>Nama :</td>
-          <td><input type="text" name="name" value="<?php echo htmlentities($row_Recordset2['name'], ENT_COMPAT, 'UTF-8'); ?>" size="32"></td>
+          <td>
+            <input type="text" name="name" value="<?php echo htmlentities($row_Recordset2['name'], ENT_COMPAT, 'UTF-8'); ?>" size="32" required ></td>
+            <input type="hidden" name="type" value="user">
         </tr>
-        <tr>
+        <!--<tr>
           <td>Password :</td>
-          <td><input type="text" name="password" value="" size="32" placeholder="New Password"></td>
-        </tr>
+          <td>
+            <input type="text" name="password" value="" size="32" placeholder="New Password"></td>
+        </tr>-->
         <tr>
           <td>&nbsp;</td>
           <td><input type="submit" class="btn btn-success" value="Update"></td>

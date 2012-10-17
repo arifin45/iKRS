@@ -191,6 +191,9 @@
 					<?php
 					//menampilkan matakuliah ke dalam tabel
 					for($i=0; $i<count($kode_matkul); $i++){
+						
+						$cek2 = mysql_query("SELECT * FROM krs WHERE user_id='$userId' AND kode_matkul='$kode_matkul[$i]' AND tahun='$tahun'");
+						if(mysql_num_rows($cek2) < 1){
 					?>
 					<tr>
 						<td id="k1<?=$i;?>"><?=$kode_matkul[$i];?></td>
@@ -201,6 +204,7 @@
 						</td>
 					</tr>
 					<?php
+						}
 					}
 					?>
 					<tr>
