@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 14, 2012 at 03:33 PM
+-- Generation Time: Oct 19, 2012 at 05:47 PM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -33,18 +33,31 @@ CREATE TABLE IF NOT EXISTS `krs` (
   `semester` varchar(15) NOT NULL,
   `tahun` varchar(9) NOT NULL,
   `nilai` varchar(2) DEFAULT NULL,
+  `status` varchar(5) NOT NULL,
   PRIMARY KEY (`nomor`),
   KEY `user_id` (`user_id`),
   KEY `kode_matkul` (`kode_matkul`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data for table `krs`
 --
 
-INSERT INTO `krs` (`nomor`, `user_id`, `kode_matkul`, `semester`, `tahun`, `nilai`) VALUES
-(2, 'test', 'IF1094', 'Ganjil', '2012/2013', NULL),
-(3, 'test', 'DU1013', 'Ganjil', '2012/2013', NULL);
+INSERT INTO `krs` (`nomor`, `user_id`, `kode_matkul`, `semester`, `tahun`, `nilai`, `status`) VALUES
+(1, 'test', 'IF1062', 'Ganjil', '2012/2013', NULL, ''),
+(2, 'test', 'IF1094', 'Ganjil', '2012/2013', NULL, ''),
+(3, 'test', 'DU1013', 'Ganjil', '2012/2013', NULL, ''),
+(4, 'test', 'IF1053', 'Ganjil', '2012/2013', NULL, ''),
+(5, 'test', 'DU2012', 'Ganjil', '2012/2013', NULL, ''),
+(6, 'test', 'DK1023', 'Ganjil', '2012/2013', NULL, ''),
+(7, 'test', 'IF1083', 'Ganjil', '2012/2013', NULL, ''),
+(8, '11510', 'IF1062', 'Ganjil', '2012/2013', NULL, ''),
+(9, '11510', 'IF1094', 'Ganjil', '2012/2013', NULL, ''),
+(10, '11510', 'IF1053', 'Ganjil', '2012/2013', NULL, ''),
+(11, '11510', 'DU2012', 'Ganjil', '2012/2013', NULL, ''),
+(12, '11510', 'DK1023', 'Ganjil', '2012/2013', NULL, ''),
+(13, '11510', 'IF1083', 'Ganjil', '2012/2013', NULL, ''),
+(14, '11510', 'DU1014', 'Ganjil', '2012/2013', NULL, '');
 
 -- --------------------------------------------------------
 
@@ -57,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `matakuliah` (
   `kode_matkul` varchar(10) NOT NULL,
   `nama_matkul` varchar(50) NOT NULL,
   `sks` int(2) NOT NULL,
-  `dosen` varchar(25) NOT NULL DEFAULT 'Kosong',
+  `dosen` varchar(40) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`id_matkul`),
   UNIQUE KEY `kode_matkul` (`kode_matkul`),
   KEY `dosen` (`dosen`)
@@ -75,14 +88,7 @@ INSERT INTO `matakuliah` (`id_matkul`, `kode_matkul`, `nama_matkul`, `sks`, `dos
 (5, 'DU2012', 'BAHASA INGGRIS', 2, 'dosen5'),
 (6, 'DK1023', 'KALKULUS I', 3, 'dosen6'),
 (7, 'IF1083', 'ARSITEKTUR & ORG. KOMPUTER', 3, 'dosen7'),
-(8, 'DU1014', 'AGAMA KRISTEN', 3, 'dosen8'),
-(9, 'DK2222', 'DASAR KEWIRAUSAHAAN', 2, 'dosen9'),
-(10, 'DU2093', 'PENDIDIKAN PANCASILA & KEWARGANEGARAAN', 3, 'dosen10'),
-(11, 'IF2012', 'PENGANTAR INFORMATIKA + P', 2, 'dosen11'),
-(12, 'IF2063', 'INT. MANUSIA & KOMPUTER', 3, 'dosen12'),
-(13, 'IF2053', 'KECAKAPAN ANTAR PERSONAL', 3, 'dosen13'),
-(14, 'DK2073', 'MATEMATIKA DISKRIT I', 3, 'dosen14'),
-(15, 'DK2023', 'KALKULUS II', 3, 'dosen15');
+(8, 'DU1014', 'AGAMA KRISTEN', 3, 'dosen8');
 
 -- --------------------------------------------------------
 
@@ -121,9 +127,17 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`user_id`, `name`, `password`, `type`, `penasihat`) VALUES
+('11510', 'Fin', '5bcbb819023630661a60ca318639c604', 'user', 'dosen2'),
 ('admin1', 'Mas Admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', NULL),
+('dosen1', 'Pak Dosen', 'ce28eed1511f631af6b2a7bb0a85d636', 'dosen', NULL),
 ('dosen2', 'Bu Dosen', 'ce28eed1511f631af6b2a7bb0a85d636', 'dosen', NULL),
-('test', 'Test', '202cb962ac59075b964b07152d234b70', 'user', NULL);
+('dosen3', 'Bapak A', 'ce28eed1511f631af6b2a7bb0a85d636', 'dosen', NULL),
+('dosen4', 'Bu B', 'ce28eed1511f631af6b2a7bb0a85d636', 'dosen', NULL),
+('dosen5', 'A', 'ce28eed1511f631af6b2a7bb0a85d636', 'dosen', NULL),
+('dosen6', 'B', 'ce28eed1511f631af6b2a7bb0a85d636', 'dosen', NULL),
+('dosen7', 'C', 'ce28eed1511f631af6b2a7bb0a85d636', 'dosen', NULL),
+('dosen8', 'D', 'ce28eed1511f631af6b2a7bb0a85d636', 'dosen', NULL),
+('test', 'Mas Bro', '202cb962ac59075b964b07152d234b70', 'user', 'dosen1');
 
 --
 -- Constraints for dumped tables
@@ -133,7 +147,8 @@ INSERT INTO `user` (`user_id`, `name`, `password`, `type`, `penasihat`) VALUES
 -- Constraints for table `krs`
 --
 ALTER TABLE `krs`
-  ADD CONSTRAINT `krs_ibfk_4` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `krs_ibfk_4` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `krs_ibfk_5` FOREIGN KEY (`kode_matkul`) REFERENCES `matakuliah` (`kode_matkul`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `nilai`

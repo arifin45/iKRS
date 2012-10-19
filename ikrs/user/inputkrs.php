@@ -51,6 +51,8 @@
 		<title>KRS</title>
 		<link href="../css/bootstrap-edit.min.css" rel="stylesheet">
 		<link href="../css/bootstrap-responsive.css" rel="stylesheet">
+		<!-- Le fav and touch icons -->
+    	<link rel="shortcut icon" href="../img/favicon.ico" /> 
 		<script>
 			<?php
 				echo "var jumlah = ".count($kode_matkul).";\n";
@@ -103,7 +105,7 @@
 		        	<div class="nav-collapse collapse">
 	            		<ul class="nav">
 	              			<li><a href="index.php">Home</a></li>
-	              			<li class="active"><a href="inputkrs.php">Input KRS</a></li>
+	              			<li class="active"><a href="inputkrs.php">KRS Online</a></li>
 	              			<li><a href="../logout.php">Logout</a></li>
 	            		</ul>
 	          		</div><!--/.nav-collapse -->
